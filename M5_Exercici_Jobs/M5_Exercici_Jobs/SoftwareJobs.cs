@@ -10,7 +10,6 @@ namespace M5_Exercici_Jobs
         /*
          *  Clase principal del programa: 
          *  
-         *  Primero te muestra el salario base y los empleados. Luego...  
          *  Pregunta que es vol fer: cambiar salario base, ver el salario base, mostrar treballadors, afegir treballadors, mostar ajudes.
          * 
          *  Tiene como atributos los salarios base segun el tipo de empleado y los tipos de empleado posibles
