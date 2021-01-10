@@ -20,13 +20,13 @@ namespace M5_Exercici_Jobs
         {
             // Metodo principal del programa. Es el metodo que se ejecuta en el Main 
 
-            // EJECUTAR SIEMPRE PRIMERO cargamos la lista de objetos Employee y los salarios que tenemos guardada en el archivo employee.xml
+            // EJECUTAR SIEMPRE PRIMERO cargamos la lista de objetos Employee y los salarios que tenemos guardada en el archivo employee.xml y salary.xml
             List<Employee> lista = new List<Employee>(); // creamos la lista employe
             lista = Connexion.ReadEmployeeFromXmlFile(Connexion.getPathEmployee()); // asignamos el contenido de empoliyee.xml a la lista creada
             Console.OutputEncoding = Encoding.UTF8; // declaramos el utf8 en los Console.Write para los simbolos de €
             Salary salario = new Salary(); // creamos nuevo objeto salario
             salario = Connexion.ReadSalaryFromXmlFile(Connexion.getPathSalary()); // le asignamos de contenido el objeto guardado en el archivo salary.xml
-            // EJECITAR HASTA AQUÍ SIEMPRE PRIMERO
+            // EJECUTAR HASTA AQUÍ SIEMPRE PRIMERO
 
         Inicio:
             Console.Clear();
