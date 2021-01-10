@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEmployee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Employee>
+    <_ID>1</_ID>
+    <_Nom>Gandalf</_Nom>
+    <_TipusTreballador>Boss</_TipusTreballador>
+    <_SalariBase>300</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>2</_ID>
+    <_Nom>Frodo</_Nom>
+    <_TipusTreballador>Manager</_TipusTreballador>
+    <_SalariBase>110</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>3</_ID>
+    <_Nom>Aragorn</_Nom>
+    <_TipusTreballador>Employee</_TipusTreballador>
+    <_SalariBase>42.5</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>4</_ID>
+    <_Nom>Gimli</_Nom>
+    <_TipusTreballador>Employee</_TipusTreballador>
+    <_SalariBase>42.5</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>5</_ID>
+    <_Nom>Merry</_Nom>
+    <_TipusTreballador>Volunteer</_TipusTreballador>
+    <_SalariBase>0</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>6</_ID>
+    <_Nom>Pipin</_Nom>
+    <_TipusTreballador>Volunteer</_TipusTreballador>
+    <_SalariBase>0</_SalariBase>
+  </Employee>
+  <Employee>
+    <_ID>7</_ID>
+    <_Nom>Boromir</_Nom>
+    <_TipusTreballador>Boss</_TipusTreballador>
+    <_SalariBase>300</_SalariBase>
+  </Employee>
+</ArrayOfEmployee>

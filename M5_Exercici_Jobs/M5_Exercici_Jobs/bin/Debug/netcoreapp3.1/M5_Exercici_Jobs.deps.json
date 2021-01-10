@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "M5_Exercici_Jobs/1.0.0": {
+        "runtime": {
+          "M5_Exercici_Jobs.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "M5_Exercici_Jobs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
