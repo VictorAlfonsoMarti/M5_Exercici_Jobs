@@ -107,13 +107,21 @@ namespace M5_Exercici_Jobs
                     lista = Connexion.ReadEmployeeFromXmlFile(Connexion.getPathEmployee());
                     goto Inicio;
                 case "6":
-                    // MILESTONE 3 - borrar esto tras implementar
+                    ManagerEmployee.AssignarAjuda(lista);
+                    // guardamos los datos y los volvemos a cargar sobreescribiendo lista
+                    Connexion.WriteEmployeeToXmlFile(Connexion.getPathEmployee(), lista);
+                    lista = Connexion.ReadEmployeeFromXmlFile(Connexion.getPathEmployee());
                     goto Inicio;
                 case "7":
-                    // MILESTONE 3 - borrar esto tras implementar
+                    Console.WriteLine("APLICANDO BONO...");
+                    ManagerEmployee.BonificarGlobal(lista);
+                    ManagerEmployee.showEmployee(lista);
+                    Console.WriteLine("Pulse ENTER para continuar.");
+                    Connexion.WriteEmployeeToXmlFile(Connexion.getPathEmployee(), lista);
+                    Console.ReadLine();
                     goto Inicio;
                 case "8":
-                    Console.WriteLine("GRACIAS POR UTILIZAR SOFTAREJOBS");
+                    Console.WriteLine("GRACIAS POR UTILIZAR SOFTWAREJOBS");
                     break;
                 default:
                     Console.WriteLine("ERROR: NÚMERO NO RECONOCIDO");

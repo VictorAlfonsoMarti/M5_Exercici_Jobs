@@ -59,7 +59,7 @@ namespace M5_Exercici_Jobs
         }
 
 
-        public static double checkBaseSalary(string tipoTrabajador)
+        public static double checkBaseSalary(string tipoTrabajador, string experiencia)
         {
             // Comprobador para que el salario base introducido esté dentro del rango y no sea un string ni contenga simbolos
             /*
@@ -72,7 +72,8 @@ namespace M5_Exercici_Jobs
 
             // ASIGNAMOS SALARIO
             double salarioFinal = 0; // inicializamos el salario a 0 y segun el caso modificamos
-            Salary salario = new Salary(); // llamamos al objeto salary que contiene los salarios
+            Salary salario = Connexion.ReadSalaryFromXmlFile(Connexion.getPathSalary()); // le asignamos de contenido el objeto guardado en el archivo salary.xml
+
 
             switch (tipoTrabajador)
             {
@@ -87,36 +88,112 @@ namespace M5_Exercici_Jobs
                 case "Employee":
                     salarioFinal = salario._SalarioBaseEmployee;
                     salarioFinal = salarioFinal - ((15 * salario._SalarioBaseEmployee) / 100); // restamos la reducción del 15%
+                    // Comprobamos la experiencia del empleado
+                    switch (experiencia)
+                    {
+                        case "Junior":
+                            salarioFinal = salarioFinal + ((5 * salario._SalarioBaseBoss) / 100); // Le añadimos un 5%
+                            break;
+                        case "Mid":
+                            salarioFinal = salarioFinal + ((10 * salario._SalarioBaseBoss) / 100); // Le añadimos un 10%
+                            break;
+                        case "Senior":
+                            salarioFinal = salarioFinal + ((15 * salario._SalarioBaseBoss) / 100); // Le añadimos un 15%
+                            break;
+                    }
                     break;
                 case "Volunteer":
                     salarioFinal = salario._SalarioBaseVolunteer; // asignamos el salario del Voluntario, que tiene que ser 0
                     break;
+
             }
+            SalarioInvalido:
+            // Preguntamos si quiere ponerle un salario personalizado
+            Console.WriteLine("El salario del trabajador sera de {0}. Quieres modificarlo?", salarioFinal);
+            string modificar = Console.ReadLine();
+            if (modificar == "si")
+            {
+                Console.WriteLine("Introduce el nuevo salario"); // Le preguntamos por el salario y lo ponemos en la variable
+                salarioFinal = Convert.ToDouble(Console.ReadLine());
+            }
+            // Segun el tipo de trabajador
+            switch (tipoTrabajador)
+            { 
+                // Si es un Manager
+                case "Manager":
+                    if (salarioFinal < 3000) // Si cobra menos de 3000. Se informa
+                    {
+                        Console.WriteLine("Salario Invalido.");
+                        goto SalarioInvalido;
+                    }
+                    else if (salarioFinal > 5000) // Si cobra mas de 5000. Se informa
+                    {
+                        Console.WriteLine("Salario Invalido.");
+                        goto SalarioInvalido;
+                    }
+                    break;
+                // Si es un Boss
+                case "Boss":
+                    if (salarioFinal < 8000) // Si cobra menos de 8000. Se informa
+                    {
+                        Console.WriteLine("Salario Invalido.");
+                        goto SalarioInvalido;
+                    }
+                    break;
+                // Si es un Employee
+                case "Employee":
+                    switch (experiencia)
+                    {
+                        // Si es un Senior
+                        case "Senior":
+                            if (salarioFinal < 2700) // Si cobra menos de 2700. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            else if (salarioFinal > 4000) // Si cobra mas de 5000. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            break;
+                        // Si es un Mid
+                        case "Mid":
+                            if (salarioFinal < 1800) // Si cobra menos de 1800. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            else if (salarioFinal > 2500) // Si cobra mas de 2500. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            break;
+                        // Si es un Junior
+                        case "Junior":
+                            if (salarioFinal < 900) // Si cobra menos de 900. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            else if (salarioFinal > 1600) // Si cobra mas de 1600. Se informa
+                            {
+                                Console.WriteLine("Salario Invalido.");
+                                goto SalarioInvalido;
+                            }
+                            break;
+                    }
+                    break;
+                case "Volunteer":
+                    if (salarioFinal > 0) // Si cobra mas de 0. Se informa
+                    {
+                        Console.WriteLine("Salario Invalido.");
+                        goto SalarioInvalido;
+                    }
 
-
-
-            /*FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * 
-             *  FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * FALTA AÑADIR COMPROBADOR MILESTONE 2
-             * 
-             * */
-
-
-
-
-
-
-
+                    break;
+            }
 
             return salarioFinal;
         }

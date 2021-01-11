@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Salary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <_SalarioBaseManager>150</_SalarioBaseManager>
-  <_SalarioBaseBoss>220</_SalarioBaseBoss>
-  <_SalarioBaseEmployee>70</_SalarioBaseEmployee>
+  <_SalarioBaseManager>3000</_SalarioBaseManager>
+  <_SalarioBaseBoss>8000</_SalarioBaseBoss>
+  <_SalarioBaseEmployee>2000</_SalarioBaseEmployee>
   <_SalarioBaseVolunteer>0</_SalarioBaseVolunteer>
   <_TipusPosibles>
     <string>Manager</string>

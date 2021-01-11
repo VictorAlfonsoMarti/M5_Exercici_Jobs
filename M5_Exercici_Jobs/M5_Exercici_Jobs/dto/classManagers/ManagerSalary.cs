@@ -77,10 +77,8 @@ namespace M5_Exercici_Jobs
             {
                 case "si":
                     goto respuestaErronea; // volvemos al inicio del programa
-                    break;
                 case "no":
                     goto salir; // vamos al final
-                    break;
                 default:
                     Console.WriteLine("ERROR: escribe 'si' o 'no'");
                     goto modificarOtro; // error y volvemos a pedir si quieren modificar otro
