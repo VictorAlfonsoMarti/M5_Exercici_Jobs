@@ -30,6 +30,10 @@ namespace M5_Exercici_Jobs
         public string Experiencia { get => experiencia; set => experiencia = value; }
         public int Reduccio { get => reduccio; }
 
+        public override string ToString()
+        {
+            return Experiencia;
+        }
 
 
     }

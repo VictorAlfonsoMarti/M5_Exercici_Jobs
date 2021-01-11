@@ -146,7 +146,8 @@ namespace M5_Exercici_Jobs
             idErroneo: //punto de retorno por si el id es erroneo
             Console.WriteLine("Indica el ID del trabajador que quieres eliminiar o escribe 'salir':");
             id = Console.ReadLine(); //guardamos el id introducido
-
+        sortir:
+            id = "salir";
             if (id != "salir") //si no quieren salir
             {
                 try
@@ -158,7 +159,8 @@ namespace M5_Exercici_Jobs
                             entradaErronea: //punto de retorno por si no han escrito si o no en la pregunta de estas seguro
                             Console.WriteLine("Emplado a eliminar: {0}", lista[i].ToString()); //mostramos empleado
                             Console.WriteLine("¿Está seguro que quiere borrarlo? si || no"); 
-                            string seguro = Console.ReadLine(); 
+                            string seguro = Console.ReadLine();
+                            if (seguro == "salir") { goto sortir; }
                             if (seguro == "si") //si han puesto que estan seguros
                             {
                                 lista.Remove(lista[i]); //borramos empleado de la lista
@@ -189,5 +191,81 @@ namespace M5_Exercici_Jobs
                 }
             }
         }
+
+        public static void AssignarAjuda(List<Employee> lista)
+        {
+            string id = "";
+            principioBonificar:
+            Console.WriteLine("Lista de trabajadores:");
+            Console.WriteLine();
+            ManagerEmployee.showEmployee(lista); //mostramos la lista de trabajadores
+            Console.WriteLine(); 
+        idErroneo: //punto de retorno por si el id es erroneo
+            Console.WriteLine("Indica el ID del voluntario al que quieres asignar una ayuda gubernamental:");
+            id = Console.ReadLine(); //guardamos el id introducido
+        sortir:
+            id  =  "salir";
+            if (id != "salir") //si no quieren salir
+            {
+                try
+                {
+                    for (int i = 0; i < lista.Count; i++) //recorremos la lista de empleados
+                    {
+                        if (lista[i]._ID.Equals(Convert.ToInt32(id))) //si encontramos coincidencia || PUNTO DEL TRY, COGE LA EXEPCION DE UNABLE CONVERT TO INT
+                        {
+                        entradaErronea: //punto de retorno por si no han escrito si o no en la pregunta de estas seguro
+                            Console.WriteLine("Voluntario a bonificar: {0}", lista[i].ToString()); //mostramos empleado
+                            Console.WriteLine("¿Está seguro que quieres bonificarlo? si || no");
+                            string seguro = Console.ReadLine();
+                            if (seguro == "salir") { goto sortir; }
+                            if (seguro == "si") //si han puesto que estan seguros
+                            {
+                                lista[i]._SalariBase  =  lista[i]._SalariBase  +  300; //bonificamos el voluntario con 300€
+                                //en el comentario anterior se ha comentado que bonificamos al voluntario con 300 eurazos
+                                Console.WriteLine("Voluntario bonificado");
+                                goto principioBonificar;
+                            }
+                            else if (seguro != "no") //si no han puesto que si, i tampoco no 
+                            {
+                                Console.WriteLine("ERROR: Entrada no reconocida.");
+                                goto entradaErronea; // volvemos a pedir que nos digan si estan seguros
+                            }
+                            else // si dicen que no estan seguros
+                            {
+                                Console.WriteLine("Deseleccionando voluntario.");
+                                goto idErroneo; //volvemos a pedir que nos digan un id o que salgamos
+                            }
+                        }
+
+                    }
+                    // si no existe el id introducido ejecutará este codigo al no haber entrado en el if ni haber salido por ningun goto;
+                    Console.WriteLine("ERROR: ID NO ENCONTRADO");
+                    goto idErroneo;// volvemos a pedir otro id
+                }
+                catch (System.FormatException ex)
+                {
+                    Console.WriteLine("ERROR: ID NO RECONOCIDA");
+                    goto idErroneo;
+                }
+            }
+        }
+
+        public static void BonificarGlobal(List<Employee> lista)
+        {
+            Console.WriteLine("Plantilla bonificada +10%");
+            for (int i = 0; i < lista.Count; i++) //recorremos la lista de empleados
+            {
+                if (lista[i]._TipusTreballador!="Volunteer") //si encontramos coincidencia || PUNTO DEL TRY, COGE LA EXEPCION DE UNABLE CONVERT TO INT
+                {
+                    lista[i]._SalariBase  =  lista[i]._SalariBase  *  1.1;
+                    lista[i]._SalariBase_net = lista[i]._SalariBase_net * 1.1;
+                    lista[i]._SalariBase_anual = lista[i]._SalariBase_anual * 1.1;
+                    lista[i]._SalariBase_anual_net = lista[i]._SalariBase_anual_net * 1.1;
+                }
+
+            }
+        }
+
     }
+    
 }
