@@ -37,6 +37,7 @@ namespace M5_Exercici_Jobs
             string tipusTreballador;
             Boolean correcto = false;
             string esCorrecto;
+            string experiencia;
             
 
             while (correcto == false) // mientras no indiquemos por pantalla que el trabajador es correcto
@@ -47,8 +48,25 @@ namespace M5_Exercici_Jobs
                 nom = Console.ReadLine();
                 Console.WriteLine("Escribe el tipo de empleado: Manager || Boss || Employee || Volunteer");
                 tipusTreballador = Console.ReadLine();
+                Employee empleadoNuevo;
 
-                Employee empleadoNuevo = new Employee(lista.Count+1,nom, tipusTreballador); // creamos el objeto con las variables que nos han dado
+                if (tipusTreballador == "Employee")
+                {
+                    ExperienciaErronea:
+                    Console.WriteLine("Escribe la experiencia del empleado: Senior || Mid || Junior");
+                    experiencia = Console.ReadLine();
+                    if (experiencia != "Senior" && experiencia != "Junior" && experiencia != "Mid")
+                    {
+                        Console.WriteLine("Error: Experiencia no reconeguda");
+                        goto ExperienciaErronea;
+                    }
+                    empleadoNuevo = new Employee(lista.Count + 1, nom, tipusTreballador, experiencia);
+                }
+                else
+                {
+                    empleadoNuevo = new Employee(lista.Count + 1, nom, tipusTreballador); // creamos el objeto con las variables que nos han dado
+                }
+
                 
                 // mostramos el empleado por pantalla
                 Console.WriteLine("Nuevo empleado creado: ");

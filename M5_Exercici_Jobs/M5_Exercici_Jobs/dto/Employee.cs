@@ -24,6 +24,7 @@ namespace M5_Exercici_Jobs
         private string nom;
         private string tipusTreballador;
         private double salariBase;
+        private EmployeeType experiencia;
 
         //GETTERS Y SETTERS
         public int _ID
@@ -47,15 +48,30 @@ namespace M5_Exercici_Jobs
             set { salariBase = value; }
         }
 
+        public EmployeeType _Experiencia
+        {
+            get { return experiencia; }
+            set { experiencia = value; }
+        }
+
         // CONSTRUCTOR
+        public Employee(int id, string nom, string tipusTreballador, string experiencia)
+        {
+            // generem el objecte comrpobant amb els metodes de check cada una de les variables
+            _ID = id; // per id agafem la llargada de la llista de objectes Employee +1, la pasem al metode per crear el objecte Employee
+            _Nom = Check.checkName(nom);
+            _TipusTreballador = Check.checkEmployeeType(tipusTreballador);
+            _SalariBase = Check.checkBaseSalary(_TipusTreballador, experiencia); 
+        }
         public Employee(int id, string nom, string tipusTreballador)
         {
             // generem el objecte comrpobant amb els metodes de check cada una de les variables
             _ID = id; // per id agafem la llargada de la llista de objectes Employee +1, la pasem al metode per crear el objecte Employee
             _Nom = Check.checkName(nom);
             _TipusTreballador = Check.checkEmployeeType(tipusTreballador);
-            _SalariBase = Check.checkBaseSalary(_TipusTreballador); 
+            _SalariBase = Check.checkBaseSalary(_TipusTreballador, "");
         }
+
         public Employee()
         {
             // constructor buit utilitzat en la lectura / escriptura del fitxer .xml
